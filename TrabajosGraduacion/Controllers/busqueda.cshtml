@@ -1,0 +1,34 @@
+﻿@model List<Model.Datos>
+
+@{
+    ViewBag.title = "Busqueda de Datos";
+}
+
+@using (Html.BeginForm("Index", "Datos", FormMethod.Post))
+{
+    <div>
+        @Html.TextBox("cadena","", new {@class="from-control" })
+        <button type="submit" class="btn btn-dark">Buscar</button>
+    </div>
+}
+@if (Model !=null)
+{ 
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>facultad</th>
+        <th>Alumno</th>
+        <th>fecha</th>
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+         <td>@p.Id</td>
+         <td>@p.facultad</td>
+         <td>@p.Alumno</td>
+         <td>@p.fecha</td>
+        </tr>
+        }
+</table> 
+}
