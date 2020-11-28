@@ -10,11 +10,11 @@ using TrabajosGraduacion.Models;
 
 namespace TrabajosGraduacion.Controllers
 {
-    public class RegistroesController : Controller
+    public class RegistrosController : Controller
     {
         private readonly TrabajosGraduacionContext _context;
 
-        public RegistroesController(TrabajosGraduacionContext context)
+        public RegistrosController(TrabajosGraduacionContext context)
         {
             _context = context;
         }
