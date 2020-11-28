@@ -18,11 +18,10 @@ namespace TrabajosGraduacion.Controllers
         {
             _logger = logger;
         }
-        private IniciarBD RegistrosBD = new IniciarBD();
-        public IActionResult Index(string cadena = "")
+
+        public IActionResult Index()
         {
-            List<Datos> datos = RegistrosBD.buscarDatos(cadena);
-            return View(datos);
+            return View();
         }
         public IActionResult Privacy()
         {

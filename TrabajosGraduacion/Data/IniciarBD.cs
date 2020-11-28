@@ -1,6 +1,7 @@
 ﻿using TrabajosGraduacion.Models;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace TrabajosGraduacion.Data
 {
@@ -13,13 +14,6 @@ namespace TrabajosGraduacion.Data
             {
                 return;
             }    
-        }
-
-        public static void BuscarDatos(string cadena)
-        {
-            string palabra;
-            palabra = "Hola mundo";
-            return;
         }
     }
 }
