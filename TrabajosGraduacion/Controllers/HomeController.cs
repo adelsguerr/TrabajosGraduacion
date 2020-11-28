@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TrabajosGraduacion.Data;
 using TrabajosGraduacion.Models;
 
 namespace TrabajosGraduacion.Controllers
@@ -17,12 +18,12 @@ namespace TrabajosGraduacion.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index()
+        private IniciarBD RegistrosBD = new IniciarBD();
+        public IActionResult Index(string cadena = "")
         {
-            return View();
+            List<Datos> datos = RegistrosBD.buscarDatos(cadena);
+            return View(datos);
         }
-
         public IActionResult Privacy()
         {
             return View();
