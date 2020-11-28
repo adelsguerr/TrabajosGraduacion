@@ -65,6 +65,7 @@ namespace TrabajosGraduacion.Controllers
             return View(registro);
         }
 
+
         // GET: Registroes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -143,6 +144,25 @@ namespace TrabajosGraduacion.Controllers
             _context.Registro.Remove(registro);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // Ingresar nuevo registro
+        public IActionResult Ingresar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Ingresar([Bind("RegistroID,Tipo,Titulo,Autor,Año,Facultad,Carrera")] Registro registro)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(registro);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(registro);
         }
 
         private bool RegistroExists(int id)
