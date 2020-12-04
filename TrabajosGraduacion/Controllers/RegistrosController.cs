@@ -19,6 +19,12 @@ namespace TrabajosGraduacion.Controllers
             _context = context;
         }
 
+        // GET: Registros para buscador
+        public async Task<IActionResult> Buscador()
+        {
+            return View(await _context.Registro.ToListAsync());
+        }
+
         // GET: Registros
         public async Task<IActionResult> Index()
         {
