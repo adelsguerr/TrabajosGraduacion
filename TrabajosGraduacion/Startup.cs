@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TrabajosGraduacion.Data;
+using TrabajosGraduacion.Models;
 
 namespace TrabajosGraduacion
 {
@@ -27,12 +29,13 @@ namespace TrabajosGraduacion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TrabajosGraduacionBDContext cont)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            
             else
             {
                 app.UseExceptionHandler("/Home/Error");
@@ -52,6 +55,8 @@ namespace TrabajosGraduacion
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            IniciarDB.Iniciar(cont);
         }
     }
 }
