@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using TrabajosGraduacion.Models;
 
@@ -34,4 +35,34 @@ namespace TrabajosGraduacion.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+//    public async Task<IActionResult> Index(string sortOrder, string searchString)
+  //  {
+       // ViewData["NameSortParm"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+        //ViewData["CurrentFilter"] = searchString;
+
+        //var students = from s in DbContext.
+    //                   select s;
+  //      if (!String.IsNullOrEmpty(searchString))
+      //  {
+        //    students = students.Where(s => s.LastName.Contains(searchString)
+                  //                 || s.FirstMidName.Contains(searchString));
+        //}
+        //switch (sortOrder)
+        //{
+          //  case "name_desc":
+            //    students = students.OrderByDescending(s => s.LastName);
+              //  break;
+            //case "Date":
+            //    students = students.OrderBy(s => s.EnrollmentDate);
+             //   break;
+         //   case "date_desc":
+        //        students = students.OrderByDescending(s => s.EnrollmentDate);
+       //         break;
+       //     default:
+       //         students = students.OrderBy(s => s.LastName);
+      //          break;
+    //    }
+    //    return View(await students.AsNoTracking().ToListAsync());
+//    }
 }
