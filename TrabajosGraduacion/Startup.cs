@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,7 +57,10 @@ namespace TrabajosGraduacion
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            IniciarBD.Iniciar(context);
+
+            DbInitializer.Initialize(context);
         }
     }
 }
+
+
