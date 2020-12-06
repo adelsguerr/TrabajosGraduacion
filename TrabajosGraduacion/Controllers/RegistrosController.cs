@@ -149,5 +149,11 @@ namespace TrabajosGraduacion.Controllers
         {
             return _context.Registro.Any(e => e.RegistroId == id);
         }
+
+        // GET: Busqueda Registros
+        public async Task<IActionResult> Busqueda()
+        {
+            return View(await _context.Registro.ToListAsync());
+        }
     }
 }
