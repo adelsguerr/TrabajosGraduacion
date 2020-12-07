@@ -149,5 +149,21 @@ namespace TrabajosGraduacion.Controllers
         {
             return _context.Registro.Any(e => e.RegistroId == id);
         }
+
+        [HttpPost]
+        public ActionResult Add() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Registro model) 
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            return View();
+        }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model TrabajosGraduacion.Models.Registro
+@{
+    ViewBag.Title = "Agregar Usuario";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Add", "Registro", FormMethod.Post, new { role = "form", @class = "" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationMessage("error", new { @class = "text-danger" })
+
+            @Html.LabelFor(d => d.Tipo)
+            @Html.TextBoxFor(d => d.Tipo, new { @class = "form-control" })
+
+            @Html.LabelFor(d => d.Titulo)
+            @Html.TextBoxFor(d => d.Titulo, new { @class = "form-control" })
+
+            @Html.LabelFor(d => d.Autor)
+            @Html.TextBoxFor(d => d.Autor, new { @class = "form-control" })
+
+            @Html.LabelFor(d => d.Anio)
+            @Html.TextBoxFor(d => d.Anio, new { @class = "form-control" })
+
+            @Html.LabelFor(d => d.Facultad)
+            @Html.TextBoxFor(d => d.Facultad, new { @class = "form-control" })
+
+            @Html.LabelFor(d => d.Carrera)
+            @Html.TextBoxFor(d => d.Carrera, new { @class = "form-control" })
+
+            <div style="text-align:right;">
+                <input type="submit" class="btn btn-success" value="Guardar"/>
+            </div>
+        }
+    </div>
+</div>

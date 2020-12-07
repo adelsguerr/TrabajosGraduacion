@@ -13,9 +13,30 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                @{
+                    var Tipo = new List<SelectListItem>()
+                    {
+                        new SelectListItem()
+                        {
+                            Text = "Pasantías",
+                            Value = "1"
+                        },
+                        new SelectListItem()
+                        {
+                            Text = "Proyectos",
+                            Value = "2"
+                        },
+                        new SelectListItem()
+                        {
+                            Text = "Tesis",
+                            Value = "3"
+                        }
+                    };
+                 }
+                <br />
                 <label asp-for="Tipo" class="control-label"></label>
-                <input asp-for="Tipo" class="form-control" />
                 <span asp-validation-for="Tipo" class="text-danger"></span>
+                @Html.DropDownList("Prueba",Tipo) 
             </div>
             <div class="form-group">
                 <label asp-for="Titulo" class="control-label"></label>
