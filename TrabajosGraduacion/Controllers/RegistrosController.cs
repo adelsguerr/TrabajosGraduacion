@@ -28,6 +28,7 @@ namespace TrabajosGraduacion.Controllers
             return View(await _context.Registro.ToListAsync());
         }
 
+
         // GET: Registros/Create
         public IActionResult Ingresar()
         {
@@ -140,6 +141,19 @@ namespace TrabajosGraduacion.Controllers
         {
             return View(await _context.Registro.ToListAsync());
         }
+
+        // GET: Editar Eliminar Registros
+        public async Task<IActionResult> Editar_Eliminar()
+        {
+            return View(await _context.Registro.ToListAsync());
+        }
+
+        public IActionResult Estadistica()
+        {
+            return View();
+        }
+
+
 
     }
 }

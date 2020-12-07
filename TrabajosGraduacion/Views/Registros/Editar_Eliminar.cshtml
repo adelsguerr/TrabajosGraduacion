@@ -62,9 +62,8 @@
                             @Html.DisplayFor(modelItem => item.Carrera)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.RegistroId">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.RegistroId">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.RegistroId">Delete</a>
+                            <a asp-action="Editar" asp-route-id="@item.RegistroId">Editar</a> |
+                            <a asp-action="Eliminar" asp-route-id="@item.RegistroId">Eliminar</a>
                         </td>
                     </tr>
                 }
