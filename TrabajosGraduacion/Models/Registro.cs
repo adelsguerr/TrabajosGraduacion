@@ -19,7 +19,7 @@ namespace TrabajosGraduacion.Models
         public string Titulo { get; set; }
 
         [Required(ErrorMessage = "El autor del registro es requerido.")]
-        [RegularExpression(@"^[A-Z]{1}[a-zA-ZÀ-ÿ\u00f1]{2,50}\s[A-Z]{1}[a-za-zA-ZÀ-ÿ\u00f1]{2,50}$", ErrorMessage = "Formato no válido, Ingrese su Nombre y Apellido.")]
+        [RegularExpression(@"^[A-Z]{1}[a-zÀ-ÿ\u00f1]{2,50}\s[A-Z]{1}[a-za-zÀ-ÿ\u00f1]{2,50}$", ErrorMessage = "Formato no válido, Ingrese su Nombre y Apellido.")]
         public string Autor { get; set; }
 
         [Required(ErrorMessage = "El año del registro es requerido.")]
