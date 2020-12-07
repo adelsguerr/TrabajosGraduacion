@@ -12,7 +12,7 @@ namespace TrabajosGraduacion.Models
         public int RegistroId { get; set; }
 
         [Required(ErrorMessage = "El tipo de registro es requerido.")]
-        public string Tipo { get; set; }
+        public Tipos Tipo { get; set; }
 
         [Required(ErrorMessage = "El título del registro es requerido.")]
         [Display(Name = "Título")]
@@ -31,5 +31,18 @@ namespace TrabajosGraduacion.Models
 
         [Required(ErrorMessage = "La carrera del registro es requerido.")]
         public string Carrera { get; set; }
+
+
+    }
+
+    public enum Tipos
+    {
+        Pasantía, Proyecto, Tesis
+    }
+
+    public static class HtmlDropDownExtensions
+    {
+        public static MvcHtmlString EnumDropDownList<TEnum>(this HtmlHelper htmlHelper, string name, TEnum selectedValue) { }
+
     }
 }

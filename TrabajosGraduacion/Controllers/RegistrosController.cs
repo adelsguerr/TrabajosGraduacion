@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using TrabajosGraduacion.Data;
 using TrabajosGraduacion.Models;
@@ -41,6 +44,16 @@ namespace TrabajosGraduacion.Controllers
             }
 
             return View(registro);
+        }
+
+
+        
+
+        [HttpGet]
+        public IActionResult CrearPrueba() 
+        {
+            
+            return View();
         }
 
         // GET: Registros/Create
@@ -155,5 +168,6 @@ namespace TrabajosGraduacion.Controllers
         {
             return View(await _context.Registro.ToListAsync());
         }
+
     }
 }
