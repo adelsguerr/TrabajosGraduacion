@@ -19,13 +19,13 @@ namespace TrabajosGraduacion.Controllers
             _context = context;
         }
 
-        // GET: Registroes
+        // GET: Registros
         public async Task<IActionResult> Index()
         {
             return View(await _context.Registro.ToListAsync());
         }
 
-        // GET: Registroes/Details/5
+        // GET: Registros/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,7 +34,7 @@ namespace TrabajosGraduacion.Controllers
             }
 
             var registro = await _context.Registro
-                .FirstOrDefaultAsync(m => m.RegistroID == id);
+                .FirstOrDefaultAsync(m => m.RegistroId == id);
             if (registro == null)
             {
                 return NotFound();
@@ -43,18 +43,18 @@ namespace TrabajosGraduacion.Controllers
             return View(registro);
         }
 
-        // GET: Registroes/Create
-        public IActionResult Create()
+        // GET: Registros/Create
+        public IActionResult Ingresar()
         {
             return View();
         }
 
-        // POST: Registroes/Create
+        // POST: Registros/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegistroID,Titulo,Autor,Año,Facultad,Carrera")] Registro registro)
+        public async Task<IActionResult> Ingresar([Bind("RegistroId,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace TrabajosGraduacion.Controllers
             return View(registro);
         }
 
-        // GET: Registroes/Edit/5
+        // GET: Registros/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,14 +81,14 @@ namespace TrabajosGraduacion.Controllers
             return View(registro);
         }
 
-        // POST: Registroes/Edit/5
+        // POST: Registros/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RegistroID,Titulo,Autor,Año,Facultad,Carrera")] Registro registro)
+        public async Task<IActionResult> Edit(int id, [Bind("RegistroId,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
         {
-            if (id != registro.RegistroID)
+            if (id != registro.RegistroId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace TrabajosGraduacion.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RegistroExists(registro.RegistroID))
+                    if (!RegistroExists(registro.RegistroId))
                     {
                         return NotFound();
                     }
@@ -116,7 +116,7 @@ namespace TrabajosGraduacion.Controllers
             return View(registro);
         }
 
-        // GET: Registroes/Delete/5
+        // GET: Registros/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,7 +125,7 @@ namespace TrabajosGraduacion.Controllers
             }
 
             var registro = await _context.Registro
-                .FirstOrDefaultAsync(m => m.RegistroID == id);
+                .FirstOrDefaultAsync(m => m.RegistroId == id);
             if (registro == null)
             {
                 return NotFound();
@@ -134,7 +134,7 @@ namespace TrabajosGraduacion.Controllers
             return View(registro);
         }
 
-        // POST: Registroes/Delete/5
+        // POST: Registros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -147,7 +147,13 @@ namespace TrabajosGraduacion.Controllers
 
         private bool RegistroExists(int id)
         {
-            return _context.Registro.Any(e => e.RegistroID == id);
+            return _context.Registro.Any(e => e.RegistroId == id);
+        }
+
+        // GET: Busqueda Registros
+        public async Task<IActionResult> Busqueda()
+        {
+            return View(await _context.Registro.ToListAsync());
         }
     }
 }

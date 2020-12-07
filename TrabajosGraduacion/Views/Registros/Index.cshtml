@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<TrabajosGraduacion.Models.Registro>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista";
 }
 
-<h1>Index</h1>
+<h1>Lista de Registros</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Ingresar">Crear un nuevo registro</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Titulo)
             </th>
@@ -19,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.Autor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Año)
+                @Html.DisplayNameFor(model => model.Anio)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Facultad)
@@ -34,13 +37,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Titulo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Autor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Año)
+                @Html.DisplayFor(modelItem => item.Anio)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Facultad)
@@ -49,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Carrera)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.RegistroID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RegistroID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RegistroID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.RegistroId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RegistroId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RegistroId">Delete</a>
             </td>
         </tr>
 }
