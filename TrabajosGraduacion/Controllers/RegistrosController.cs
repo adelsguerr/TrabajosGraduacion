@@ -28,34 +28,6 @@ namespace TrabajosGraduacion.Controllers
             return View(await _context.Registro.ToListAsync());
         }
 
-        // GET: Registros/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var registro = await _context.Registro
-                .FirstOrDefaultAsync(m => m.RegistroId == id);
-            if (registro == null)
-            {
-                return NotFound();
-            }
-
-            return View(registro);
-        }
-
-
-        
-
-        [HttpGet]
-        public IActionResult CrearPrueba() 
-        {
-            
-            return View();
-        }
-
         // GET: Registros/Create
         public IActionResult Ingresar()
         {

@@ -15,7 +15,14 @@
             <input type="hidden" asp-for="RegistroId" />
             <div class="form-group">
                 <label asp-for="Tipo" class="control-label"></label>
-                <input asp-for="Tipo" class="form-control" />
+                @{
+                    List<SelectListItem> lst = new List<SelectListItem>();
+                    lst.Add(new SelectListItem { Text = "Pasantía", Value = "Pasantía" });
+                    lst.Add(new SelectListItem { Text = "Proyecto", Value = "Proyecto" });
+                    lst.Add(new SelectListItem { Text = "Tesis", Value = "Tesis" });
+                }
+
+                @Html.DropDownListFor(model => model.Tipo, lst, "Seleccione el tipo", new { @class = "form-control" })
                 <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
             <div class="form-group">
