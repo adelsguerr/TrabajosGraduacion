@@ -15,6 +15,9 @@
 
     <!-- Custom styles for this template-->
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">*@
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 <body id="page-top">
 
@@ -48,7 +51,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Administración
+                Procesos
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -61,13 +64,19 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">CRUD</h6>
-                        <a class="collapse-item" asp-area="" asp-controller="Registros" asp-action="Create">Ingresar Registros</a>
+                        <a class="collapse-item" asp-area="" asp-controller="Registros" asp-action="Ingresar">Ingresar Registros</a>
                         <a class="collapse-item" asp-area="" asp-controller="Registros" asp-action="Busqueda">Búscar Registros</a>
                         <a class="collapse-item" asp-area="" asp-controller="Registros" asp-action="Index">Eliminar/Editar Registros</a>
                     </div>
                 </div>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Análisis
+            </div>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -148,8 +157,15 @@
     <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
+    <!-- Page level plugins -->
+    <script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables/dataTables.bootstrap4.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="~/js/sb-admin-2.min.js"></script>
+    @*<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>*@
+
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -44,7 +44,7 @@ namespace TrabajosGraduacion.Controllers
         }
 
         // GET: Registros/Create
-        public IActionResult Create()
+        public IActionResult Ingresar()
         {
             return View();
         }
@@ -54,7 +54,7 @@ namespace TrabajosGraduacion.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegistroId,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
+        public async Task<IActionResult> Ingresar([Bind("RegistroId,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
         {
             if (ModelState.IsValid)
             {

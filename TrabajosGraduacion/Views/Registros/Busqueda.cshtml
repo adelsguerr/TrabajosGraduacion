@@ -3,63 +3,109 @@
 @{
     ViewData["Title"] = "Búsqueda";
 }
-
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
 <h1>Búsqueda de Registros</h1>
+<hr />
+<br />
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Lista de Registros</h6>
+    </div>
+    <div class="card-body" style="margin-left: 30px">
+        <table id="table_id" class="display">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Año</th>
+                        <th>Facultad</th>
+                        <th>Carrera</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tipo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Titulo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Autor)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Anio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Facultad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Carrera)
+                            </td>
+                        </tr>
+                    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Anio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facultad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Carrera)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Anio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Facultad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Carrera)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RegistroId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RegistroId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RegistroId">Delete</a>
-            </td>
-        </tr>
+                </tbody>
+            @*<thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Anio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Facultad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Carrera)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Anio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Facultad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Carrera)
+                    </td>
+                </tr>
+            }
+        </tbody>*@
+        </table>
+    </div>
+</div>
+
+<!--JavaScript del DataTable-->
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#table_id").DataTable();
+        });
+    </script>
 }
-    </tbody>
-</table>
