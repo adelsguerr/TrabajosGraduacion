@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TrabajosGraduacion.Data;
 
 namespace TrabajosGraduacion.Models
 {
@@ -32,6 +33,23 @@ namespace TrabajosGraduacion.Models
 
         [Required(ErrorMessage = "La carrera del registro es requerido.")]
         public string Carrera { get; set; }
+
+        //public static List<dynamic> RegistroAnio(int registro, int anio)
+        //{
+        //    var dataRegistro = new List<dynamic>();
+
+        //    using (var db = new TrabajosGraduacionContext())
+        //    {
+        //        var item = db.Registro
+        //            .Where(x => x.Anio = anio)
+        //            .Select(x => new { })
+        //            .ToList<dynamy>();
+                
+        //        registro = item;
+        //    }
+
+        //    return dataRegistro;
+        //}
 
     }
 }

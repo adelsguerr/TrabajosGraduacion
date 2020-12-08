@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using TrabajosGraduacion.Data;
 using TrabajosGraduacion.Models;
 
 namespace TrabajosGraduacion.Controllers
@@ -33,5 +35,12 @@ namespace TrabajosGraduacion.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Estadisticas()
+        {
+            return View();
+        }
+
+       
     }
 }
