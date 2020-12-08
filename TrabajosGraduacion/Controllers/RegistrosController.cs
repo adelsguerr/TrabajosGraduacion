@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using TrabajosGraduacion.Data;
 using TrabajosGraduacion.Models;
@@ -19,38 +22,15 @@ namespace TrabajosGraduacion.Controllers
             _context = context;
         }
 
-        // GET: Registros para buscador
-        public async Task<IActionResult> Buscador()
-        {
-            return View(await _context.Registro.ToListAsync());
-        }
-
-        // GET: Registros
+        //// GET: Registros
         public async Task<IActionResult> Index()
         {
             return View(await _context.Registro.ToListAsync());
         }
 
-        // GET: Registros/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var registro = await _context.Registro
-                .FirstOrDefaultAsync(m => m.IdRegistro == id);
-            if (registro == null)
-            {
-                return NotFound();
-            }
-
-            return View(registro);
-        }
 
         // GET: Registros/Create
-        public IActionResult Create()
+        public IActionResult Ingresar()
         {
             return View();
         }
@@ -60,19 +40,19 @@ namespace TrabajosGraduacion.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdRegistro,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
+        public async Task<IActionResult> Ingresar([Bind("RegistroId,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(registro);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index).Replace("RegistrosController", "HomeController"));
             }
             return View(registro);
         }
 
         // GET: Registros/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Editar(int? id)
         {
             if (id == null)
             {
@@ -87,12 +67,14 @@ namespace TrabajosGraduacion.Controllers
             return View(registro);
         }
 
-
+        // POST: Registros/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdRegistro,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
+        public async Task<IActionResult> Editar(int id, [Bind("RegistroId,Tipo,Titulo,Autor,Anio,Facultad,Carrera")] Registro registro)
         {
-            if (id != registro.IdRegistro)
+            if (id != registro.RegistroId)
             {
                 return NotFound();
             }
@@ -106,7 +88,7 @@ namespace TrabajosGraduacion.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RegistroExists(registro.IdRegistro))
+                    if (!RegistroExists(registro.RegistroId))
                     {
                         return NotFound();
                     }
@@ -115,13 +97,13 @@ namespace TrabajosGraduacion.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Editar_Eliminar));
             }
             return View(registro);
         }
 
         // GET: Registros/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Eliminar(int? id)
         {
             if (id == null)
             {
@@ -129,7 +111,7 @@ namespace TrabajosGraduacion.Controllers
             }
 
             var registro = await _context.Registro
-                .FirstOrDefaultAsync(m => m.IdRegistro == id);
+                .FirstOrDefaultAsync(m => m.RegistroId == id);
             if (registro == null)
             {
                 return NotFound();
@@ -139,22 +121,39 @@ namespace TrabajosGraduacion.Controllers
         }
 
         // POST: Registros/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var registro = await _context.Registro.FindAsync(id);
             _context.Registro.Remove(registro);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Editar_Eliminar));
         }
 
         private bool RegistroExists(int id)
         {
-            return _context.Registro.Any(e => e.IdRegistro == id);
+            return _context.Registro.Any(e => e.RegistroId == id);
+        }
+
+        // GET: Busqueda Registros
+        public async Task<IActionResult> Busqueda()
+        {
+            return View(await _context.Registro.ToListAsync());
+        }
+
+        // GET: Editar Eliminar Registros
+        public async Task<IActionResult> Editar_Eliminar()
+        {
+            return View(await _context.Registro.ToListAsync());
+        }
+
+        public IActionResult Estadistica()
+        {
+            return View();
         }
 
 
-        
+
     }
 }

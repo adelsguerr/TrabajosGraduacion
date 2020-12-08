@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,7 +40,8 @@ namespace TrabajosGraduacion
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+                //app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -57,7 +58,10 @@ namespace TrabajosGraduacion
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            InicializadorDB.Inicializar(context);
+
+            DbInitializer.Initialize(context);
         }
     }
 }
+
+

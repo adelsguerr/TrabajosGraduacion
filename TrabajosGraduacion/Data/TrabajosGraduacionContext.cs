@@ -9,6 +9,10 @@ namespace TrabajosGraduacion.Data
 {
     public class TrabajosGraduacionContext : DbContext
     {
+        public TrabajosGraduacionContext()
+        {
+        }
+
         public TrabajosGraduacionContext (DbContextOptions<TrabajosGraduacionContext> options)
             : base(options)
         {
